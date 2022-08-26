@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,9 +10,14 @@ import Paper from "@mui/material/Paper";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import SimpsonsContext from "../context/SimpsonsContext";
 
 const ListItem = ({ simpson, index }) => {
   const navigate = useNavigate();
+  const { simpsons, setSimpsons } = useContext(SimpsonsContext);
+  const trash = () => {
+    setSimpsons(simpsons.filter((e) => e.id !== simpson.id));
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -29,22 +35,21 @@ const ListItem = ({ simpson, index }) => {
               ></img>
             </TableCell>
             <TableCell
-              sx={{ cursor: "pointer" }}
-              align="right"
+              sx={{ cursor: "pointer", whiteSpace: "pre" }}
               onClick={() =>
                 navigate(`/details/${simpson.id}`, { state: simpson })
               }
             >
               {simpson.name}
             </TableCell>
-            <TableCell align="right">
-              <ArrowCircleUpIcon />
+            <TableCell>
+              <ArrowCircleUpIcon color="success" />
             </TableCell>
-            <TableCell align="right">
-              <ArrowCircleDownIcon />
+            <TableCell>
+              <ArrowCircleDownIcon color="error" />
             </TableCell>
-            <TableCell align="right">
-              <DeleteOutlineIcon />
+            <TableCell>
+              <DeleteOutlineIcon onClick={trash} />
             </TableCell>
           </TableRow>
         </TableBody>

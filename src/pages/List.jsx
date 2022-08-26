@@ -1,12 +1,12 @@
+import { Container } from "@mui/material";
 import React from "react";
 import SimpsonsList from "../components/SimpsonsList";
 
 const List = () => {
   return (
-    <div>
-      <h1>List PAge</h1>
+    <Container>
       <SimpsonsList />
-    </div>
+    </Container>
   );
 };
 
