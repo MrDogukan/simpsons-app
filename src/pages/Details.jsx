@@ -1,7 +1,8 @@
 import React from "react";
+import SimpsonDetail from "../components/SimpsonDetail";
 
 const Details = () => {
-  return <div>Details</div>;
+  return <SimpsonDetail />;
 };
 
 export default Details;
