@@ -1,5 +1,4 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import { margin } from "@mui/system";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +10,29 @@ const AddItem = () => {
   const [description, setDescription] = useState("");
   const [job, setJob] = useState("");
   const [name, setName] = useState("");
-
   const navigate = useNavigate();
+
+  const newSimpsonId = () => {
+    let maxId = 0;
+    simpsons.forEach((simpson) => {
+      if (simpson.id > maxId) {
+        maxId = simpson.id;
+      }
+    });
+    return parseInt(maxId) + 1;
+  };
+  const handleClick = () => {
+    const id = newSimpsonId();
+    const newSimpson = {
+      avatar,
+      description,
+      job,
+      name,
+      id,
+    };
+    setSimpsons(simpsons.concat([newSimpson]));
+    navigate("/");
+  };
   return (
     <Container
       sx={{ padding: "2rem", display: "flex", flexDirection: "column" }}
@@ -52,7 +72,7 @@ const AddItem = () => {
         value={avatar}
         onChange={(e) => setAvatar(e.target.value)}
       />
-      <Button variant="contained" type="submit">
+      <Button variant="contained" type="submit" onClick={handleClick}>
         Add Character
       </Button>
     </Container>
