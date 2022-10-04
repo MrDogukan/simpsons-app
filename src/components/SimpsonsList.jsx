@@ -10,9 +10,10 @@ const SimpsonsList = () => {
   const { simpsons } = useContext(SimpsonsContext);
   const navigate = useNavigate();
   // console.log(simpsons);
+
   return (
     <Box>
-      <Typography variant="h3" align="center">
+      <Typography margin={"20px"} variant="h3" align="center">
         Simpsons List
       </Typography>
       {simpsons.map((simpson, index) => {

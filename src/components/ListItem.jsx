@@ -19,36 +19,80 @@ const ListItem = ({ simpson, index }) => {
     setSimpsons(simpsons.filter((e) => e.id !== simpson.id));
   };
 
+  const upItem = () => {
+    if (simpsons.indexOf(simpson) === 0) {
+      return;
+    } else {
+      let oldIndex = simpsons.indexOf(simpson);
+
+      simpsons.splice(oldIndex, 1);
+
+      simpsons.splice(oldIndex - 1, 0, simpson);
+      let newSimpsons = [];
+      setSimpsons(newSimpsons.concat(simpsons));
+      console.log(newSimpsons);
+    }
+  };
+
+  const downItem = () => {
+    if (simpsons.indexOf(simpson) === simpsons.length - 1) {
+      return;
+    } else {
+      let oldIndex = simpsons.indexOf(simpson);
+
+      simpsons.splice(oldIndex, 1);
+
+      simpsons.splice(oldIndex + 1, 0, simpson);
+      let newSimpsons = [];
+      setSimpsons(newSimpsons.concat(simpsons));
+      console.log(newSimpsons);
+    }
+  };
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer sx={{ maxWidth: 650, margin: "auto" }} component={Paper}>
+      <Table sx={{}} aria-label="simple table">
         <TableBody>
-          <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell component="th" scope="row">
+          <TableRow
+            sx={{
+              width: "100%",
+              "&:last-child td, &:last-child th": { border: 0 },
+            }}
+          >
+            <TableCell
+              sx={{ width: "10%" }}
+              align="center"
+              component="th"
+              scope="row"
+            >
               {index + 1}
             </TableCell>
-            <TableCell>
+            <TableCell sx={{ width: "20%", padding: "2px" }} align="center">
               <img
                 className="list-item-img"
-                src={simpson.avatar.split("/revision")[0]}
+                src={
+                  simpson.avatar.split("/revision")[0]
+                    ? simpson.avatar.split("/revision")[0]
+                    : "images/Simpson.png"
+                }
                 alt={simpson.id}
               ></img>
             </TableCell>
             <TableCell
-              sx={{ cursor: "pointer", whiteSpace: "pre" }}
+              sx={{ cursor: "pointer", width: "40%", paddingLeft: "5px" }}
               onClick={() =>
                 navigate(`/details/${simpson.id}`, { state: simpson })
               }
             >
               {simpson.name}
             </TableCell>
-            <TableCell>
-              <ArrowCircleUpIcon color="success" />
+            <TableCell sx={{ width: "10%" }} align="center">
+              <ArrowCircleUpIcon color="success" onClick={upItem} />
             </TableCell>
-            <TableCell>
-              <ArrowCircleDownIcon color="error" />
+            <TableCell sx={{ width: "10%" }} align="center">
+              <ArrowCircleDownIcon color="error" onClick={downItem} />
             </TableCell>
-            <TableCell>
+            <TableCell sx={{ width: "10%" }} align="center">
               <DeleteOutlineIcon onClick={trash} />
             </TableCell>
           </TableRow>

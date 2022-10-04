@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,7 +9,6 @@ import { Container } from "@mui/material";
 
 const SimpsonDetail = () => {
   const { state } = useLocation();
-  const { id } = useParams();
   const navigate = useNavigate();
 
   console.log(state.name);
