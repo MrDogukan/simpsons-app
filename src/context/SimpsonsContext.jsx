@@ -15,12 +15,20 @@ export const SimpsonsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
   useEffect(() => {
-    getSimpsons();
+    if ([...JSON.parse(localStorage.getItem("simpsons"))].length > 0) {
+      setSimpsons([...JSON.parse(localStorage.getItem("simpsons"))]);
+    } else {
+      getSimpsons();
+    }
   }, []);
   //   console.log(simpsons);
 
+  useEffect(() => {
+    localStorage.setItem("simpsons", JSON.stringify(simpsons));
+  }, [simpsons]);
+
   return (
-    <SimpsonsContext.Provider value={{ simpsons, setSimpsons }}>
+    <SimpsonsContext.Provider value={{ simpsons, setSimpsons, getSimpsons }}>
       {children}
     </SimpsonsContext.Provider>
   );
