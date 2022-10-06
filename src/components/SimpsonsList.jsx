@@ -21,7 +21,7 @@ const SimpsonsList = () => {
           Get The List
         </Button>
       ) : (
-        simpsons.map((simpson, index) => {
+        simpsons?.map((simpson, index) => {
           return <ListItem simpson={simpson} index={index} key={simpson.id} />;
         })
       )}
