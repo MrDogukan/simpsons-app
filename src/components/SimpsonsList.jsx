@@ -17,7 +17,11 @@ const SimpsonsList = () => {
         Simpsons List
       </Typography>
       {simpsons.length === 0 ? (
-        <Button onClick={getSimpsons} variant="contained">
+        <Button
+          sx={{ cursor: "pointer" }}
+          onClick={getSimpsons}
+          variant="contained"
+        >
           Get The List
         </Button>
       ) : (

@@ -38,7 +38,11 @@ const AddItem = () => {
       sx={{ padding: "2rem", display: "flex", flexDirection: "column" }}
     >
       <Box>
-        <Button variant="contained" onClick={() => navigate("/")}>
+        <Button
+          sx={{ cursor: "pointer" }}
+          variant="contained"
+          onClick={() => navigate("/")}
+        >
           Back To List
         </Button>
         <Typography variant="h4" align="center">
@@ -72,7 +76,12 @@ const AddItem = () => {
         value={avatar}
         onChange={(e) => setAvatar(e.target.value)}
       />
-      <Button variant="contained" type="submit" onClick={handleClick}>
+      <Button
+        sx={{ cursor: "pointer" }}
+        variant="contained"
+        type="submit"
+        onClick={handleClick}
+      >
         Add Character
       </Button>
     </Container>

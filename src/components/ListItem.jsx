@@ -87,13 +87,21 @@ const ListItem = ({ simpson, index }) => {
               {simpson.name}
             </TableCell>
             <TableCell sx={{ width: "10%" }} align="center">
-              <ArrowCircleUpIcon color="success" onClick={upItem} />
+              <ArrowCircleUpIcon
+                sx={{ cursor: "pointer" }}
+                color="success"
+                onClick={upItem}
+              />
             </TableCell>
             <TableCell sx={{ width: "10%" }} align="center">
-              <ArrowCircleDownIcon color="error" onClick={downItem} />
+              <ArrowCircleDownIcon
+                sx={{ cursor: "pointer" }}
+                color="error"
+                onClick={downItem}
+              />
             </TableCell>
             <TableCell sx={{ width: "10%" }} align="center">
-              <DeleteOutlineIcon onClick={trash} />
+              <DeleteOutlineIcon sx={{ cursor: "pointer" }} onClick={trash} />
             </TableCell>
           </TableRow>
         </TableBody>
