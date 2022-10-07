@@ -15,7 +15,7 @@ export const SimpsonsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
   useEffect(() => {
-    if ([{ ...JSON.parse(localStorage.getItem("simpsons")) }].length > 0) {
+    if (localStorage.getItem("simpsons")) {
       setSimpsons([...JSON.parse(localStorage.getItem("simpsons"))]);
     } else {
       getSimpsons();
